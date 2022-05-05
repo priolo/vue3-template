@@ -1,4 +1,6 @@
 import { defineStore } from 'pinia'
+import i18n from '@/plugins/i18n';
+
 
 export const useCounterStore = defineStore('counter', {
 
@@ -15,6 +17,8 @@ export const useCounterStore = defineStore('counter', {
   actions: {
     increment() {
       this.count++
+      console.log(i18n.global.t("app.test.click"))
     },
   },
+  
 })

@@ -13,11 +13,13 @@
 import { onUnmounted, onMounted } from "vue";
 import { useRouter /*, useRoute*/ } from "vue-router";
 import { useCounterStore } from "@/stores/counter";
+import { useLayoutStore } from "@/stores/layout";
 
 
 // HOOKS
 const router = useRouter();
 const counter = useCounterStore();
+const layout = useLayoutStore()
 
 
 // HANDLERS
@@ -68,5 +70,6 @@ onUnmounted(() => {
 });
 onMounted(() => {
   console.log("Component is mounted.");
+  layout.title = "Users"
 })
 </script>

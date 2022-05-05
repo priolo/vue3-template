@@ -1,9 +1,14 @@
 import { defineStore } from 'pinia'
 
+
 export const useLayoutStore = defineStore('layout', {
 
   state: () => ({ 
+
+    title: "",
+    
     drawer: true,
+
     menu: [
       {
         text: 'Home',
@@ -20,7 +25,10 @@ export const useLayoutStore = defineStore('layout', {
         path: "/docs",
         icon: "mdi-account",
       },
-    ]
+    ],
+
+    busy: false,
+
   }),
 
   getters: {
@@ -30,5 +38,15 @@ export const useLayoutStore = defineStore('layout', {
     toggleDrawer() {
       this.drawer = !this.drawer
     },
+    dialogOpen(options) {
+      console.log(options)
+    },
   },
 })
+
+export const DIALOG_TYPES = {
+	INFO: "info",
+	WARNING: "warning",
+	ERROR: "error",
+	SUCCESS: "success",
+}

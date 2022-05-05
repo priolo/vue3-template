@@ -12,7 +12,7 @@
 
       <v-col class="mb-4">
         <h1 class="display-2 font-weight-bold mb-3">
-          Welcome to the Vuetify 3 Beta
+           I18N: {{t('pag.welcome')}}
         </h1>
 
         <p class="subheading font-weight-regular">
@@ -75,57 +75,57 @@
   </v-container>
 </template>
 
-<script>
-export default {
-  name: "HelloWorld",
 
-  data: () => ({
-    ecosystem: [
-      {
-        text: "vuetify-loader",
-        href: "https://github.com/vuetifyjs/vuetify-loader",
-      },
-      {
-        text: "github",
-        href: "https://github.com/vuetifyjs/vuetify",
-      },
-      {
-        text: "awesome-vuetify",
-        href: "https://github.com/vuetifyjs/awesome-vuetify",
-      },
-    ],
-    importantLinks: [
-      {
-        text: "Chat",
-        href: "https://community.vuetifyjs.com",
-      },
-      {
-        text: "Made with Vuetify",
-        href: "https://madewithvuejs.com/vuetify",
-      },
-      {
-        text: "Twitter",
-        href: "https://twitter.com/vuetifyjs",
-      },
-      {
-        text: "Articles",
-        href: "https://medium.com/vuetify",
-      },
-    ],
-    whatsNext: [
-      {
-        text: "Explore components",
-        href: "https://vuetifyjs.com",
-      },
-      {
-        text: "Roadmap",
-        href: "https://vuetifyjs.com/introduction/roadmap/",
-      },
-      {
-        text: "Frequently Asked Questions",
-        href: "https://vuetifyjs.com/getting-started/frequently-asked-questions",
-      },
-    ],
-  }),
-};
+<script setup>
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
+const ecosystem = [
+  {
+    text: "vuetify-loader",
+    href: "https://github.com/vuetifyjs/vuetify-loader",
+  },
+  {
+    text: "github",
+    href: "https://github.com/vuetifyjs/vuetify",
+  },
+  {
+    text: "awesome-vuetify",
+    href: "https://github.com/vuetifyjs/awesome-vuetify",
+  },
+];
+const importantLinks = [
+  {
+    text: "Chat",
+    href: "https://community.vuetifyjs.com",
+  },
+  {
+    text: "Made with Vuetify",
+    href: "https://madewithvuejs.com/vuetify",
+  },
+  {
+    text: "Twitter",
+    href: "https://twitter.com/vuetifyjs",
+  },
+  {
+    text: "Articles",
+    href: "https://medium.com/vuetify",
+  },
+];
+const whatsNext = [
+  {
+    text: "Explore components",
+    href: "https://vuetifyjs.com",
+  },
+  {
+    text: "Roadmap",
+    href: "https://vuetifyjs.com/introduction/roadmap/",
+  },
+  {
+    text: "Frequently Asked Questions",
+    href: "https://vuetifyjs.com/getting-started/frequently-asked-questions",
+  },
+]
+
 </script>

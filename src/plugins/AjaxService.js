@@ -1,8 +1,7 @@
 /* eslint eqeqeq: "off" */
-import { getStoreLayout } from "../stores/layout"
-import i18n from "i18next"
-import { DIALOG_TYPES } from "../stores/layout/utils"
-import { getStoreAuth } from "../stores/auth"
+import { useLayoutStore, DIALOG_TYPES } from "@/stores/layout"
+import i18n from '@/plugins/i18n';
+//import { getStoreAuth } from "../stores/auth"
 
 
 /**
@@ -89,11 +88,11 @@ export class AjaxService {
 	 * @param {OptionCall} options
 	 */
 	async send(url, method, data, options = {}) {
-		const { setBusy, dialogOpen, setFocus } = getStoreLayout()
-		const { state:auth } = getStoreAuth()
+		const layoutStore = useLayoutStore()
+		//const { state:auth } = getStoreAuth()
 
-		if (!options.noBusy) setBusy(true)
-		const token = auth.token
+		if (!options.noBusy) layoutStore.busy = true
+		//const token = auth.token
 
 		// send request
 		const response = await fetch(
@@ -102,30 +101,32 @@ export class AjaxService {
 				method: method,
 				headers: {
 					"Content-Type": "application/json",
-					...(token && { "Authorization": `Bearer ${token}` })
+					//...(token && { "Authorization": `Bearer ${token}` })
 				},
 				body: data ? JSON.stringify(data) : undefined,
 			}
 		)
-		if (!options.noBusy) setBusy(false)
+		if (!options.noBusy) layoutStore.busy = false
 
-		setFocus("")
+		//setFocus("")
 		const status = response.status
 		let body = null
 		try {
 			body = await response.json()
-		} catch (e) {}
+		} catch (e) {
+			console.log("Error")
+		}
 
 		// error
 		if (status >= 400) {
 			const error = body && body.errors && body.errors[0] ? body.errors[0] : { code: "default", field: "" }
-			dialogOpen({
-				type: DIALOG_TYPES.ERROR,
-				title: i18n.t(getI18nPathForError(status, url, error.code, "title")),
-				text: i18n.t(getI18nPathForError(status, url, error.code, "text")),
-				labelOk: i18n.t(getI18nPathForError(status, url, error.code, "ok")),
-			})
-			setFocus(error.field)
+			// layoutStore.dialogOpen({
+			// 	type: DIALOG_TYPES.ERROR,
+			// 	title: i18n.global.t(getI18nPathForError(status, url, error.code, "title")),
+			// 	text: i18n.global.t(getI18nPathForError(status, url, error.code, "text")),
+			// 	labelOk: i18n.global.t(getI18nPathForError(status, url, error.code, "ok")),
+			// })
+			//setFocus(error.field)
 			throw response;
 		}
 		

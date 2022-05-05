@@ -1,5 +1,6 @@
 {
 	"pag": {
+		"welcome": "Welcom in IT",
 		"default": {
 			"btt_save": "Applica",
 			"btt_cancel": "Annulla",
@@ -202,6 +203,9 @@
 		"lang": {
 			"en": "English",
 			"it": "Italian"
+		},
+		"test": {
+			"click": "click it"
 		}
 	}
 }

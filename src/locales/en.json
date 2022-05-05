@@ -1,5 +1,6 @@
 {
 	"pag": {
+		"welcome": "Welcom in EN",
 		"default": {
 			"btt_save": "Apply",
 			"btt_cancel": "Cancel",
@@ -202,6 +203,9 @@
 		"lang": {
 			"en": "Inglese",
 			"it": "Italiano"
+		},
+		"test": {
+			"click": "click en"
 		}
 	}
 }

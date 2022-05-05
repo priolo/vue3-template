@@ -1,6 +1,6 @@
 <template>
   <v-navigation-drawer v-model="layout.drawer" bottom temporary>
-    <v-list :items="layout.menu">
+    <v-list>
       <v-list-item
         v-for="(item, index) in layout.menu"
         :key="index"

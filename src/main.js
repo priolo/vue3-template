@@ -7,6 +7,7 @@ import pinia from './plugins/pinia'
 import './plugins/msw';
 import i18n from './plugins/i18n';
 
+
 loadFonts()
 
 createApp(App)
@@ -15,3 +16,5 @@ createApp(App)
   .use(router)
   .use(vuetify)
   .mount('#app')
+
+
