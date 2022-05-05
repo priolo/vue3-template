@@ -15,11 +15,9 @@ import { useRouter /*, useRoute*/ } from "vue-router";
 import { useCounterStore } from "@/stores/counter";
 
 
-
 // HOOKS
 const router = useRouter();
 const counter = useCounterStore();
-
 
 
 // HANDLERS
@@ -38,7 +36,6 @@ function onIncrement() {
     state.count++;
   });
 }
-
 
 
 // WATCH
@@ -61,6 +58,7 @@ const unsubscribe = counter.$onAction(
     console.log(`Start "${name}" with params [${args.join(", ")}].`);
   }
 );
+
 
 // LIFECYCLE
 // vue setup call when component is mounted

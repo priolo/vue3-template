@@ -34,3 +34,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 [pinia](https://pinia.vuejs.org/) 
 - Components
 [vuetify3](https://next.vuetifyjs.com/)
+- Mock
+[msw](https://mswjs.io/)
+- Internationalizzation
+[Vue I18n](https://vue-i18n.intlify.dev/)

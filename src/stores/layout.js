@@ -11,8 +11,13 @@ export const useLayoutStore = defineStore('layout', {
         icon: "mdi-clock",
       },
       {
-        text: 'About',
-        path: "/about",
+        text: 'Users',
+        path: "/users",
+        icon: "mdi-account",
+      },
+      {
+        text: 'Docs',
+        path: "/docs",
         icon: "mdi-account",
       },
     ]
