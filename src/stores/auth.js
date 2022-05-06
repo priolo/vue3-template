@@ -1,5 +1,7 @@
 import { defineStore } from 'pinia'
 import ajax from "@/plugins/AjaxService"
+import { useLayoutStore, DIALOG_TYPES } from './layout'
+import i18n from '@/plugins/i18n';
 
 
 export const useAuthStore = defineStore('auth', {
@@ -23,73 +25,60 @@ export const useAuthStore = defineStore('auth', {
 
 	actions: {
 
-		// get alla USER
-		async fetchAll() {
-			const data = await ajax.get(`docs`);
-			//all.setAll(data)
-			//store.setQueryUrl(document.location.search)
+		async login() {
+			const layout = useLayoutStore()
+
+			// const res = validateAll()
+			// if (res.length > 0) {
+			// 	dialogOpen({ type: DIALOG_TYPES.WARNING, text: i18n.t("dialog.login.form.text") })
+			// 	return
+			// }
+
+			const data = {
+				username: this.username,
+				password: this.password,
+			}
+			try {
+				const response = await ajax.post("auth/login", data)
+				this.username = ""
+				this.password = ""
+				this.token = response.access_token
+			} catch (error) {
+				layout.dialogOpen({
+					type: DIALOG_TYPES.WARNING,
+					text: i18n.global.t("app.auth.failed"),
+					modal: false
+				})
+				this.logout()
+				return
+			}
+			// msg success!!
+			layout.dialogOpen({
+				type: DIALOG_TYPES.SUCCESS,
+				text: i18n.global.t("app.auth.succeeded"),
+				modal: false
+			})
+			// get the user
+			await this.fetchCurrentUser()
 		},
 
-		// edit: async (user) => {
-		// 	if (!user) user = {
-		// 		username: "",
-		// 		email: "",
-		// 		role: USER_ROLES.CUSTOMER
-		// 	}
-		// 	store.setSelect(user)
-		// 	resetAll()
-		// 	store.setDialogEditIsOpen(true)
-		// },
+		logout() {
+			//const { dialogOpen } = getStoreLayout()
+			//store.stopPollingRefreshToken()
+			this.token = null
+			this.use = null
+			//if (flash) dialogOpen({ type: DIALOG_TYPES.SUCCESS, text: i18n.t("app.auth.logout"), modal: false })
+		},
 
-		// save: async (state, _, store) => {
-		// 	const { dialogOpen } = getStoreLayout()
-		// 	const { select: user } = state
-		// 	if (!user) return false
-
-		// 	// validation
-		// 	const errs = validateAll()
-		// 	if (errs.length > 0) return false
-
-		// 	// ajax
-		// 	if (!user.id) {
-		// 		await ajax.post(`users`, user);
-		// 	} else {
-		// 		await ajax.put(`users/${user.id}`, user);
-		// 	}
-
-		// 	// feedback
-		// 	store.setDialogEditIsOpen(false)
-		// 	store.setSelect(null)
-		// 	dialogOpen({ type: DIALOG_TYPES.SUCCESS, text: i18n.t("dialog.feedback.create"), modal: false })
-
-		// 	// update users list
-		// 	store.fetchAll()
-		// },
-
-		// destroy: async (state, user, store) => {
-		// 	const { dialogOpen } = getStoreLayout()
-		// 	if (!user) return
-
-		// 	const res = await dialogOpen({
-		// 		type: DIALOG_TYPES.WARNING,
-		// 		title: i18n.t("dialog.feedback.delete.confirm.title"),
-		// 		text: i18n.t("dialog.feedback.delete.confirm.text"),
-		// 		labelOk: i18n.t("dialog.feedback.delete.confirm.yes"),
-		// 		labelCancel: i18n.t("dialog.feedback.delete.confirm.no"),
-		// 	})
-		// 	if (!res) return
-
-		// 	await ajax.delete(`users/${user.id}`);
-		// 	dialogOpen({ type: DIALOG_TYPES.SUCCESS, text: i18n.t("dialog.feedback.delete.success"), modal: false })
-
-		// 	store.fetchAll()
-		// },
+		async fetchCurrentUser() {
+			try {
+				const response = await ajax.get("auth/me");
+				this.user = response
+				//store.startPollingRefreshToken()
+			} catch (error) {
+				this.logout()
+			}
+		},
 
 	},
 })
-
-export const USER_ROLES = {
-	ADMIN: "admin",
-	WRITER: "writer",
-	CUSTOMER: "customer",
-}

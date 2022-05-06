@@ -3,11 +3,11 @@ import { defineStore } from 'pinia'
 
 export const useLayoutStore = defineStore('layout', {
 
-  state: () => ({ 
+  state: () => ({
 
     title: "",
-    
-    drawer: true,
+
+    drawer: false,
 
     menu: [
       {
@@ -29,9 +29,20 @@ export const useLayoutStore = defineStore('layout', {
 
     busy: false,
 
+    msgbox: {
+      isOpen: false,
+      options: null,
+    },
+
   }),
 
   getters: {
+    msgBoxClassColorFromType: (state) => ({ 
+      [DIALOG_TYPES.INFO]: "text-info",
+      [DIALOG_TYPES.SUCCESS]: "text-success",
+      [DIALOG_TYPES.WARNING]: "text-warning",
+      [DIALOG_TYPES.ERROR]: "text-error",
+    }[state.msgbox.options.type]),
   },
 
   actions: {
@@ -39,14 +50,29 @@ export const useLayoutStore = defineStore('layout', {
       this.drawer = !this.drawer
     },
     dialogOpen(options) {
-      console.log(options)
+      this.msgbox = {
+        options: { ...MsgBoxOptionsDefault, ...options },
+        isOpen: true,
+      }
+    },
+    dialogClose() {
+      this.msgbox = {
+        ...this.msgbox,
+        isOpen: false,
+      }
     },
   },
 })
 
 export const DIALOG_TYPES = {
-	INFO: "info",
-	WARNING: "warning",
-	ERROR: "error",
-	SUCCESS: "success",
+  INFO: "info",
+  WARNING: "warning",
+  ERROR: "error",
+  SUCCESS: "success",
+}
+const MsgBoxOptionsDefault = {
+  title: "Message box",
+  text: "Titolo generico...",
+  labelClose: "Close",
+  type: DIALOG_TYPES.INFO,
 }
