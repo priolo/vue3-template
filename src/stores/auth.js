@@ -63,11 +63,22 @@ export const useAuthStore = defineStore('auth', {
 		},
 
 		logout() {
-			//const { dialogOpen } = getStoreLayout()
+			const layout = useLayoutStore()
 			//store.stopPollingRefreshToken()
 			this.token = null
 			this.use = null
 			//if (flash) dialogOpen({ type: DIALOG_TYPES.SUCCESS, text: i18n.t("app.auth.logout"), modal: false })
+			layout.menuAccountIsOpen = false
+		},
+
+		settings() {
+			const layout = useLayoutStore()
+			layout.dialogOpen({
+				type: DIALOG_TYPES.WARNING,
+				text: i18n.global.t("dialog.feedback.not-implemented"),
+				modal: false
+			})
+			layout.menuAccountIsOpen = false
 		},
 
 		async fetchCurrentUser() {

@@ -1,5 +1,5 @@
 <template>
-  <v-app class="app">
+  <v-app :theme="layout.theme">
 
     <MsgBox />
 
@@ -22,6 +22,7 @@
 
 <script setup>
 import { useAuthStore } from "@/stores/auth";
+import { useLayoutStore } from "@/stores/layout";
 import MainBody from "@/components/layouts/MainBody";
 import AppBar from "@/components/layouts/AppBar";
 import NavigationDrawer from "@/components/layouts/NavigationDrawer";
@@ -30,7 +31,8 @@ import MsgBox from "@/components/MsgBox";
 import LoginView from "@/views/LoginView";
 
 // HOOKS
-const auth = useAuthStore();
+const auth = useAuthStore()
+const layout = useLayoutStore()
 
 // HANDLERS
 </script>

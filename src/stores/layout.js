@@ -34,6 +34,10 @@ export const useLayoutStore = defineStore('layout', {
       options: null,
     },
 
+    menuAccountIsOpen: false,
+
+    theme: THEME_TYPES.LIGHT,
+
   }),
 
   getters: {
@@ -42,7 +46,7 @@ export const useLayoutStore = defineStore('layout', {
       [DIALOG_TYPES.SUCCESS]: "text-success",
       [DIALOG_TYPES.WARNING]: "text-warning",
       [DIALOG_TYPES.ERROR]: "text-error",
-    }[state.msgbox.options.type]),
+    }[state.msgbox.options?.type]),
   },
 
   actions: {
@@ -61,6 +65,9 @@ export const useLayoutStore = defineStore('layout', {
         isOpen: false,
       }
     },
+    themeToggle() {
+      this.theme = this.theme==THEME_TYPES.DARK ? THEME_TYPES.LIGHT : THEME_TYPES.DARK 
+    },
   },
 })
 
@@ -69,6 +76,10 @@ export const DIALOG_TYPES = {
   WARNING: "warning",
   ERROR: "error",
   SUCCESS: "success",
+}
+const THEME_TYPES = {
+  LIGHT: "light",
+  DARK: "dark",
 }
 const MsgBoxOptionsDefault = {
   title: "Message box",

@@ -10,26 +10,7 @@
 
     <v-spacer />
 
-    <v-menu anchor="start">
-      <template v-slot:activator="{ props }">
-        <v-btn variant="text" icon="mdi-account-circle " v-bind="props" />
-      </template>
-      <v-list>
-        <v-list-subheader>{{auth.user.email}}</v-list-subheader>
-         <v-list-item @click="auth.logout">
-          <v-list-item-avatar start>
-            <v-icon icon="mdi-logout" />
-          </v-list-item-avatar>
-          <v-list-item-title>Logout</v-list-item-title>
-        </v-list-item>
-        <v-list-item @click="auth.logout">
-          <v-list-item-avatar start>
-            <v-icon icon="mdi-logout" />
-          </v-list-item-avatar>
-          <v-list-item-title>Logout</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-menu>
+    <AccountMenu />
 
   </v-app-bar>
 </template>
@@ -38,15 +19,14 @@
 </style>
 
 <script setup>
-import { useAuthStore } from "@/stores/auth";
 import { useLayoutStore } from "@/stores/layout";
+import AccountMenu from "./AccountMenu";
 
 // HOOKS
 const layout = useLayoutStore();
-const auth = useAuthStore();
 
 // HANDLERS
 const onDrawer = () => {
-  layout.toggleDrawer();
-};
+  layout.toggleDrawer()
+}
 </script>
