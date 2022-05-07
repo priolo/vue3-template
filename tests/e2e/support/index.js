@@ -20,7 +20,7 @@ import './commands'
 // require('./commands')
 
 
-import i18n from '../../src/plugins/i18n';
+import i18n from '../../../src/plugins/i18n';
 
 export default {
 	i18n: i18n.global

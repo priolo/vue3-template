@@ -1,6 +1,6 @@
 // start MSW (mock service worler)
 
-if (process.env.NODE_ENV === 'development' || process.env.VUE_APP_MOCK === 'true') {
+if (/*process.env.NODE_ENV === 'development' || process.env.VUE_APP_MOCK === 'true'*/true) {
 	const { worker } = require('../mocks/ajax/browser')
 	worker.start()
 
