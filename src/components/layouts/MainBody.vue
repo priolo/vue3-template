@@ -1,17 +1,27 @@
 <template>
   <v-main>
-    <v-card height="200px">
-      <router-view />
-      <!-- <v-btn>Pippo2</v-btn>
-        <v-card-text>
-          The navigation drawer will appear from the bottom on smaller size
-          screens.
-        </v-card-text> -->
-    </v-card>
+    <div class="container">
+      <div class="space" />
+      <div class="content">
+        <router-view />
+      </div>
+      <div class="space" />
+    </div>
   </v-main>
 </template>
 
 <style scoped>
+.container {
+  display: flex;
+}
+
+.space {
+  flex: 1 1 auto;
+}
+.content {
+  flex: 0 0 auto;
+  min-width: 600px;
+}
 </style>
 
 <script setup>

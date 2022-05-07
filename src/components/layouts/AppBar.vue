@@ -1,14 +1,13 @@
 <template>
   <v-app-bar color="primary" prominent>
 
-    <v-app-bar-nav-icon
-      variant="text"
-      @click.stop="onDrawer"
-    ></v-app-bar-nav-icon>
+    <v-app-bar-nav-icon variant="text" @click.stop="onDrawer"></v-app-bar-nav-icon>
 
-    <v-toolbar-title>My files</v-toolbar-title>
+    <v-toolbar-title>{{ t(layout.title) }}</v-toolbar-title>
 
     <v-spacer />
+
+    <LangSelector />
 
     <AccountMenu />
 
@@ -21,6 +20,9 @@
 <script setup>
 import { useLayoutStore } from "@/stores/layout";
 import AccountMenu from "./AccountMenu";
+import LangSelector from "./LangSelector.vue";
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 
 // HOOKS
 const layout = useLayoutStore();
@@ -29,4 +31,5 @@ const layout = useLayoutStore();
 const onDrawer = () => {
   layout.toggleDrawer()
 }
+
 </script>

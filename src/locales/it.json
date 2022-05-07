@@ -1,57 +1,14 @@
 {
 	"pag": {
-		"welcome": "Welcom in IT",
-		"default": {
-			"btt_save": "Applica",
-			"btt_cancel": "Annulla",
-			"dlg": {
-				"router_confirm": {
-					"title": "Attenzione! Dati non salvati",
-					"text": "Se continui perderai i dati\nperchè non è stato salvato.\nVuoi continuare?",
-					"labelOk": "Si, cambia pagina",
-					"labelCancel": "No! Stai qui"
-				}
-			}
+		"home": {
+			"title": "Home",
+			"body": "Benvenuti in IT"
 		},
-		"user": {
-			"list": {
-				"title": "Utenti",
-				"username": "Nome",
-				"role": "Ruolo",
-				"actions": "Azioni",
-				"btt_new": "Nuovo Utente"
-			},
-			"dlg": {
-				"title_new": "Nuovo Utente",
-				"title_edit": "Modifica Utente",
-				"username": "Nome",
-				"email": "Email",
-				"role": "Ruolo",
-				"save": "Salva",
-				"cancel": "Annulla",
-				"btt_books": "Libri"
-			}
+		"users": {
+			"title": "Utenti"
 		},
-		"doc": {
-			"list": {
-				"title": "Documenti",
-				"title_doc": "Titolo",
-				"author": "Autore",
-				"link": "Link",
-				"actions": "Azioni",
-				"btt_new": "Nuovo Documento"
-			},
-			"detail": {
-				"title_new": "Nuovo Documento",
-				"title_edit": "Modifica Documento",
-				"title_form": "",
-				"title_field": "Titolo",
-				"desc": "Descrizione",
-				"link": "Link",
-				"author": "Autore",
-				"save": "Salva",
-				"cancel": "Annulla"
-			}
+		"docs": {
+			"title": "Documenti"
 		},
 		"profile": {
 			"title": "Profilo",
@@ -67,6 +24,7 @@
 		},
 		"login": {
 			"title": "Sign in",
+			"subtitle": "Effettua il tuo login... dai!",
 			"username": "Nome",
 			"password": "Password",
 			"signin": "Sign in"
@@ -155,34 +113,14 @@
 				}
 			}
 		},
-		"delete": {
-			"title": "ATTENZIONE!!!",
-			"text": "Sei sicuro di volerlo cancellare?",
-			"ok": "Si!",
-			"cancel": "No"
-		},
-		"render_error": {
-			"title": "Errore non gestito!",
-			"body": "Se il problema persiste contatta l'amministratore",
-			"reload": "Ricarica"
+		"account": {
+			"settings": "Settaggi",
+			"logout": "Esci"
 		},
 		"login": {
 			"form": {
 				"text": "Compila bene la form!"
 			}
-		},
-		"feedback": {
-			"delete": {
-				"success": "Il record è stato cancellato",
-				"confirm": {
-					"title": "ATTENZIONE! Operazione irreversibile",
-					"text": "Veramente vuoi eliminare questo elemento?",
-					"yes": "Certamente",
-					"no": "NO!"
-				}
-			},
-			"create": "Il record è stato creato con successo",
-			"not-implemented": "Non ancora implementato!"
 		}
 	},
 	"app":{

@@ -12,7 +12,7 @@ const users = [
 		"email": "admin@test.com",
 		"password": "secret",
 		"role": USER_ROLES.ADMIN,
-		"token": null,
+		"token": "((admin))",
 	},
 	{
 		"id": "usr-2",
@@ -20,7 +20,7 @@ const users = [
 		"email": "admin2@test.com",
 		"password": null,
 		"role": USER_ROLES.ADMIN,
-		"token": null,
+		"token": "((admin2))",
 	},
 	{
 		"id": "usr-3",
@@ -28,7 +28,7 @@ const users = [
 		"email": "mario@test.com",
 		"password": "secret",
 		"role": USER_ROLES.WRITER,
-		"token": null,
+		"token": "((mario))",
 	},
 	{
 		"id": "usr-4",
@@ -36,7 +36,7 @@ const users = [
 		"email": "giovanni@test.com",
 		"password": null,
 		"role": USER_ROLES.WRITER,
-		"token": null,
+		"token": "((giovanni))",
 	},
 	{
 		"id": "usr-5",
@@ -44,7 +44,7 @@ const users = [
 		"email": "daniele@test.com",
 		"password": "secret",
 		"role": USER_ROLES.CUSTOMER,
-		"token": null,
+		"token": "((daniele))",
 	},
 	{
 		"id": "usr-6",
@@ -52,7 +52,7 @@ const users = [
 		"email": "giorgio@test.com",
 		"password": null,
 		"role": USER_ROLES.CUSTOMER,
-		"token": null,
+		"token": "((giorgio))",
 	},
 	{
 		"id": "usr-7",
@@ -60,7 +60,7 @@ const users = [
 		"email": "riccardo@test.com",
 		"password": null,
 		"role": USER_ROLES.CUSTOMER,
-		"token": null,
+		"token": "((riccardo))",
 	},
 
 ]

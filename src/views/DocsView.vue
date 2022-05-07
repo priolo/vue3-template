@@ -25,7 +25,7 @@ const layout = useLayoutStore()
 // LIFECYCLE
 onMounted(() => {
   docs.fetchAll()
-  layout.title = "Documents"
+  layout.title = "pag.docs.title"
 })
 
 

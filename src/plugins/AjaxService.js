@@ -1,6 +1,7 @@
 /* eslint eqeqeq: "off" */
 import { useLayoutStore, DIALOG_TYPES } from "@/stores/layout"
-import i18n from '@/plugins/i18n';
+//import i18n from '@/plugins/i18n';
+import { useAuthStore } from "@/stores/auth";
 //import { getStoreAuth } from "../stores/auth"
 
 
@@ -88,25 +89,25 @@ export class AjaxService {
 	 * @param {OptionCall} options
 	 */
 	async send(url, method, data, options = {}) {
-		const layoutStore = useLayoutStore()
-		//const { state:auth } = getStoreAuth()
+		const layout = useLayoutStore()
+		const auth = useAuthStore()
 
-		if (!options.noBusy) layoutStore.busy = true
-		//const token = auth.token
+		if (!options.noBusy) layout.busy = true
+		const token = auth.token
 
-		// send request
+		// send request		
 		const response = await fetch(
 			`${this.options.baseUrl}${url}`,
 			{
 				method: method,
 				headers: {
 					"Content-Type": "application/json",
-					//...(token && { "Authorization": `Bearer ${token}` })
+					...(token && { "Authorization": `Bearer ${token}` })
 				},
 				body: data ? JSON.stringify(data) : undefined,
 			}
 		)
-		if (!options.noBusy) layoutStore.busy = false
+		if (!options.noBusy) layout.busy = false
 
 		//setFocus("")
 		const status = response.status
@@ -119,8 +120,8 @@ export class AjaxService {
 
 		// error
 		if (status >= 400) {
-			const error = body && body.errors && body.errors[0] ? body.errors[0] : { code: "default", field: "" }
-			// layoutStore.dialogOpen({
+			//const error = body && body.errors && body.errors[0] ? body.errors[0] : { code: "default", field: "" }
+			// layout.dialogOpen({
 			// 	type: DIALOG_TYPES.ERROR,
 			// 	title: i18n.global.t(getI18nPathForError(status, url, error.code, "title")),
 			// 	text: i18n.global.t(getI18nPathForError(status, url, error.code, "text")),

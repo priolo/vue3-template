@@ -11,17 +11,17 @@ export const useLayoutStore = defineStore('layout', {
 
     menu: [
       {
-        text: 'Home',
+        text: 'pag.home.title',
         path: "/",
         icon: "mdi-clock",
       },
       {
-        text: 'Users',
+        text: 'pag.users.title',
         path: "/users",
         icon: "mdi-account",
       },
       {
-        text: 'Docs',
+        text: 'pag.docs.title',
         path: "/docs",
         icon: "mdi-account",
       },
@@ -31,10 +31,11 @@ export const useLayoutStore = defineStore('layout', {
 
     msgbox: {
       isOpen: false,
-      options: null,
+      options: {...MsgBoxOptionsDefault},
     },
 
     menuAccountIsOpen: false,
+
 
     theme: THEME_TYPES.LIGHT,
 
@@ -68,6 +69,10 @@ export const useLayoutStore = defineStore('layout', {
     themeToggle() {
       this.theme = this.theme==THEME_TYPES.DARK ? THEME_TYPES.LIGHT : THEME_TYPES.DARK 
     },
+    changeLang(lang) {
+      this.lang = lang
+      
+    },
   },
 })
 
@@ -77,13 +82,16 @@ export const DIALOG_TYPES = {
   ERROR: "error",
   SUCCESS: "success",
 }
+
 const THEME_TYPES = {
   LIGHT: "light",
   DARK: "dark",
 }
+
 const MsgBoxOptionsDefault = {
   title: "Message box",
   text: "Titolo generico...",
   labelClose: "Close",
   type: DIALOG_TYPES.INFO,
+  modal: true,
 }

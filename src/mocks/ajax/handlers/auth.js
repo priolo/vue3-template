@@ -12,15 +12,15 @@ const auth = [
 
 		const user = users.find(u => u.username == username && u.password == password);
 		if (!user) return res(
-			ctx.status(400),
+			ctx.status(401),
 			ctx.json({ "errors": [{ "code": "password_match", "field": "password" }] })
 		)
 		
 		// generate fake token
-		const header = window.btoa(`{ "alg": "HS256", "typ": "JWT" }`)
-		const payload = window.btoa(`{ "sub": "${user.id}", "name": "${user.username}", "role": "${user.role}", "exp": "xxx" }`)
-		const signature = Math.floor(Math.random()*9999)
-		user.token = `${header}.${payload}.${signature}`
+		// const header = window.btoa(`{ "alg": "HS256", "typ": "JWT" }`)
+		// const payload = window.btoa(`{ "sub": "${user.id}", "name": "${user.username}", "role": "${user.role}", "exp": "xxx" }`)
+		// const signature = Math.floor(Math.random()*9999)
+		// user.token = `${header}.${payload}.${signature}`
 
 		return res(
 			ctx.delay(500),

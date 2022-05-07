@@ -21,6 +21,7 @@
 
 
 <script setup>
+import { onMounted } from "vue";
 import { useAuthStore } from "@/stores/auth";
 import { useLayoutStore } from "@/stores/layout";
 import MainBody from "@/components/layouts/MainBody";
@@ -35,4 +36,8 @@ const auth = useAuthStore()
 const layout = useLayoutStore()
 
 // HANDLERS
+
+// LIFECYCLE
+onMounted(()=>auth.fetchCurrentUser())
+
 </script>
