@@ -17,7 +17,6 @@ export const useCounterStore = defineStore('counter', {
   actions: {
     increment() {
       this.count++
-      console.log(i18n.global.t("app.test.click"))
     },
   },
   
