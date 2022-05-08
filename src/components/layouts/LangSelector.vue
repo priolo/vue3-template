@@ -23,7 +23,6 @@ import { ref } from "vue"
 import { useLayoutStore } from "@/stores/layout";
 import i18n from '@/plugins/i18n';
 
-
 // HOOKS
 const layout = useLayoutStore();
 const isOpen = ref(false)

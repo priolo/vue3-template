@@ -1,6 +1,6 @@
 <template>
   <v-menu anchor="start" v-model="layout.menuAccountIsOpen">
-  
+
     <template v-slot:activator="{ props }">
       <v-btn variant="text" icon="mdi-account-circle " v-bind="props" />
     </template>
@@ -10,12 +10,12 @@
 
       <v-list-item @click="auth.settings">
         <v-list-item-icon start icon="mdi-cog" />
-        <v-list-item-title>{{t("dialog.account.settings")}}</v-list-item-title>
+        <v-list-item-title>{{ t("dialog.account.settings") }}</v-list-item-title>
       </v-list-item>
 
       <v-list-item @click="auth.logout">
         <v-list-item-icon start icon="mdi-logout" />
-        <v-list-item-title>{{t("dialog.account.logout")}}</v-list-item-title>
+        <v-list-item-title>{{ t("dialog.account.logout") }}</v-list-item-title>
       </v-list-item>
 
       <v-divider />

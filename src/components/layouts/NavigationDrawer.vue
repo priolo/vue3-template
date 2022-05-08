@@ -4,13 +4,8 @@
 
     <v-list>
 
-      <v-list-item
-        v-for="(item, index) in layout.menu"
-        :key="index"
-        :value="item"
-        active-color="primary"
-        :to="item.path"
-      >
+      <v-list-item v-for="(item, index) in layout.menu" :key="index" :value="item" active-color="primary"
+        :to="item.path">
         <v-list-item-avatar start>
           <v-icon :icon="item.icon" />
         </v-list-item-avatar>

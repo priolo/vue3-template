@@ -40,3 +40,11 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 	[Vue I18n](https://vue-i18n.intlify.dev/)
 - Mock
 	[msw](https://mswjs.io/)
+
+
+
+
+### NOTE
+
+- env "test"
+con NODE_ENV = "test" Vuetify o chi per lui non carica i css. Per questo motivo lanciare i test in "development"

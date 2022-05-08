@@ -10,6 +10,7 @@
   </v-main>
 </template>
 
+
 <style scoped>
 .container {
   display: flex;
@@ -18,11 +19,13 @@
 .space {
   flex: 1 1 auto;
 }
+
 .content {
   flex: 0 0 auto;
   min-width: 600px;
 }
 </style>
+
 
 <script setup>
 </script>
