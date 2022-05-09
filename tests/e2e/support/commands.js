@@ -24,6 +24,10 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+
+/**
+ * Automatismo per effettuare il login di "default"
+ */
 Cypress.Commands.add("loginDefault", (needChangePassword=false) => {
 	cy.login(
 		"((admin))",
@@ -36,6 +40,9 @@ Cypress.Commands.add("loginDefault", (needChangePassword=false) => {
 	)
 })
 
+/**
+ * Login specifico di un user
+ */
 Cypress.Commands.add("login", (token, user) => {
 	cy.window().then(win => {
 		const { setUser, setToken } = win.getStoreAuth()
@@ -44,6 +51,9 @@ Cypress.Commands.add("login", (token, user) => {
 	})
 })
 
+/**
+ * Posizione Cypress sull'entrypoint del FE
+ */
 Cypress.Commands.add("visitSite", () => {
 	cy.visit('http://localhost:8080/')
 })

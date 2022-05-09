@@ -8,7 +8,26 @@
 			"title": "Utenti"
 		},
 		"docs": {
-			"title": "Documenti"
+			"title": "Documenti",
+			"list": {
+				"title": "Documenti",
+				"title_doc": "Titolo",
+				"author": "Autore",
+				"link": "Link",
+				"actions": "Azioni",
+				"btt_new": "Nuovo Documento"
+			},
+			"detail": {
+				"title_new": "Nuovo Documento",
+				"title_edit": "Modifica Documento",
+				"title_form": "",
+				"title_field": "Titolo",
+				"desc": "Descrizione",
+				"link": "Link",
+				"author": "Autore",
+				"save": "Salva",
+				"cancel": "Annulla"
+			}
 		},
 		"profile": {
 			"title": "Profilo",

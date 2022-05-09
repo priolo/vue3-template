@@ -1,14 +1,16 @@
 import { defineStore } from 'pinia'
 import ajax from "@/plugins/AjaxService"
+import { useLayoutStore } from './layout';
 
 
 export const useDocsStore = defineStore('docs', {
 
 	state: () => ({
+
+		// tutti i DOCS
 		all: [],
-		dialogEditIsOpen: false,
+
 		select: null,
-		selectOrigin: null,
 	}),
 
 	getters: {
@@ -37,48 +39,50 @@ export const useDocsStore = defineStore('docs', {
 
 	actions: {
 
-		// get alla DOCS
+		// recupera tutti i DOCS
 		async fetchAll() {
 			const data = await ajax.get(`docs`);
 			this.all = data
 			//store.setQueryUrl(document.location.search)
 		},
 
-		// edit: async (user) => {
-		// 	if (!user) user = {
-		// 		username: "",
-		// 		email: "",
-		// 		role: USER_ROLES.CUSTOMER
-		// 	}
-		// 	store.setSelect(user)
-		// 	resetAll()
-		// 	store.setDialogEditIsOpen(true)
-		// },
+		// recupero un documento tramite id
+		async fetchById(id) {
+			const data = await ajax.get(`docs/${id}`) 
+			this.select = data
+		},
 
-		// save: async (state, _, store) => {
-		// 	const { dialogOpen } = getStoreLayout()
-		// 	const { select: user } = state
-		// 	if (!user) return false
 
-		// 	// validation
-		// 	const errs = validateAll()
-		// 	if (errs.length > 0) return false
+		// inizio 
+		async edit(doc) {
+			if (!doc) doc = {
+				title: "",
+				desc: "",
+				link: "",
+				author_id: null,
+			}
+			this.inEdit = doc
+		},
 
-		// 	// ajax
-		// 	if (!user.id) {
-		// 		await ajax.post(`users`, user);
-		// 	} else {
-		// 		await ajax.put(`users/${user.id}`, user);
-		// 	}
+		async save() {
+			const layout = useLayoutStore()
+			if (!this.select) return false
 
-		// 	// feedback
-		// 	store.setDialogEditIsOpen(false)
-		// 	store.setSelect(null)
-		// 	dialogOpen({ type: DIALOG_TYPES.SUCCESS, text: i18n.t("dialog.feedback.create"), modal: false })
+			// validation
+			// const errs = validateAll()
+			// if (errs.length > 0) return false
 
-		// 	// update users list
-		// 	store.fetchAll()
-		// },
+			// ajax
+			if (!this.select.id) {
+				await ajax.post(`docs`, this.select);
+			} else {
+				await ajax.put(`docs/${this.select.id}`, this.select);
+			}
+
+			// feedback
+			layout.dialogOpen({ type: DIALOG_TYPES.SUCCESS, text: i18n.t("dialog.feedback.create"), modal: false })
+
+		},
 
 		// destroy: async (state, user, store) => {
 		// 	const { dialogOpen } = getStoreLayout()
@@ -101,9 +105,3 @@ export const useDocsStore = defineStore('docs', {
 
 	},
 })
-
-export const USER_ROLES = {
-	ADMIN: "admin",
-	WRITER: "writer",
-	CUSTOMER: "customer",
-}

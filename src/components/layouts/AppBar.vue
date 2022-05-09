@@ -3,7 +3,7 @@
 
     <v-app-bar-nav-icon variant="text" @click.stop="onDrawer"></v-app-bar-nav-icon>
 
-    <v-toolbar-title>{{ t(layout.title) }}</v-toolbar-title>
+    <v-toolbar-title>{{ layout.title }}</v-toolbar-title>
 
     <v-spacer />
 
@@ -21,8 +21,6 @@
 import { useLayoutStore } from "@/stores/layout";
 import AccountMenu from "./AccountMenu";
 import LangSelector from "./LangSelector.vue";
-import { useI18n } from 'vue-i18n'
-const { t } = useI18n()
 
 // HOOKS
 const layout = useLayoutStore();

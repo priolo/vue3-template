@@ -18,8 +18,13 @@ const routes = [
   {
     path: '/docs',
     name: 'docs',
-    component: () => import('../views/DocsView.vue')
-  }
+    component: () => import('../views/docs/DocsView.vue')
+  },
+  {
+    path: '/docs/:id',
+    name: 'doc',
+    component: () => import('../views/docs/DetailView.vue')
+  },
 ]
 
 const router = createRouter({

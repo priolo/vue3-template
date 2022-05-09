@@ -63,7 +63,8 @@
       "no-debugger": "off",
       "no-mixed-spaces-and-tabs": "off",
       "no-unreachable": "off",
-      "no-constant-condition": "off"
+      "no-constant-condition": "off",
+      "vue/no-unused-vars": "off"
     },
     "overrides": [
       {

@@ -14,6 +14,7 @@
 <style scoped>
 .container {
   display: flex;
+  height: 100%;
 }
 
 .space {
