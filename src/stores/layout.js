@@ -8,6 +8,7 @@ export const useLayoutStore = defineStore('layout', {
     title: "",
 
     drawer: false,
+    isMobile: false,
 
     menu: [
       {
@@ -36,9 +37,9 @@ export const useLayoutStore = defineStore('layout', {
 
     menuAccountIsOpen: false,
 
-
     theme: THEME_TYPES.LIGHT,
 
+    
   }),
 
   getters: {
@@ -95,3 +96,4 @@ const MsgBoxOptionsDefault = {
   type: DIALOG_TYPES.INFO,
   modal: true,
 }
+

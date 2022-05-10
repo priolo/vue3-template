@@ -123,6 +123,18 @@
 			"form": {
 				"text": "compila bene la form!"
 			}
+		},
+		"feedback": {
+			"delete": {
+				"success": "the item was successfully deleted",
+				"confirm": {
+					"title": "WARNING! Irreversible operation",
+					"text": "Do you really want to delete this element?",
+					"yes": "Of course",
+					"no": "NO!"
+				}
+			},
+			"create": "the item was created successfully"
 		}
 	},
 	"app":{

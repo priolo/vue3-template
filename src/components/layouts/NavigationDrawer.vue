@@ -1,6 +1,6 @@
 <template>
 
-  <v-navigation-drawer v-model="layout.drawer" bottom temporary>
+  <v-navigation-drawer v-model="layout.drawer" bottom :temporary="layout.isMobile">
 
     <v-list>
 

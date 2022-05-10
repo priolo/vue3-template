@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import ajax from "@/plugins/AjaxService"
-import { useLayoutStore } from './layout';
+import { DIALOG_TYPES, useLayoutStore } from './layout';
+import i18n from '@/plugins/i18n';
 
 
 export const useDocsStore = defineStore('docs', {
@@ -80,7 +81,11 @@ export const useDocsStore = defineStore('docs', {
 			}
 
 			// feedback
-			layout.dialogOpen({ type: DIALOG_TYPES.SUCCESS, text: i18n.t("dialog.feedback.create"), modal: false })
+			layout.dialogOpen({ 
+				type: DIALOG_TYPES.SUCCESS, 
+				text: i18n.global.t("dialog.feedback.create"), 
+				modal: false 
+			})
 
 		},
 

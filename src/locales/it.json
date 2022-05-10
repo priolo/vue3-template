@@ -140,6 +140,18 @@
 			"form": {
 				"text": "Compila bene la form!"
 			}
+		},
+		"feedback": {
+			"delete": {
+				"success": "Il record è stato cancellato",
+				"confirm": {
+					"title": "ATTENZIONE! Operazione irreversibile",
+					"text": "Veramente vuoi eliminare questo elemento?",
+					"yes": "Certamente",
+					"no": "NO!"
+				}
+			},
+			"create": "Il record è stato creato con successo"
 		}
 	},
 	"app":{
