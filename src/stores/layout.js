@@ -39,6 +39,10 @@ export const useLayoutStore = defineStore('layout', {
 
     theme: THEME_TYPES.LIGHT,
 
+    size: {
+      width: document.documentElement.clientWidth,
+      height: document.documentElement.clientHeight,
+    },
     
   }),
 
@@ -49,9 +53,12 @@ export const useLayoutStore = defineStore('layout', {
       [DIALOG_TYPES.WARNING]: "text-warning",
       [DIALOG_TYPES.ERROR]: "text-error",
     }[state.msgbox.options?.type]),
+
+    isMobile: (state) => state.size.width < 780
   },
 
   actions: {
+   
     toggleDrawer() {
       this.drawer = !this.drawer
     },
@@ -97,3 +104,10 @@ const MsgBoxOptionsDefault = {
   modal: true,
 }
 
+window.addEventListener('resize', (event)=> {
+  const layout = useLayoutStore()
+  layout.size = {
+    width: document.documentElement.clientWidth,
+    height: document.documentElement.clientHeight,
+  }
+}, true);
